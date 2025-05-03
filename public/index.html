@@ -70,7 +70,7 @@
   </div>
   <script>
     async function getReason() {
-      const res = await fetch('/no');
+      const res = await fetch('/.netlify/functions/no');
       const data = await res.json();
       document.getElementById('reason').textContent = data.reason;
     }
