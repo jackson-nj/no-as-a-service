@@ -20,6 +20,12 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
+app.use(express.static('public'));
+
+// Add this route for the root path
+app.get('/', (req, res) => {
+  res.send('No as a Service API is running!');
+});
 
 // Random rejection reason endpoint
 app.get('/no', (req, res) => {

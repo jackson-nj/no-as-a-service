@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>No as a Service</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: rgba(34, 34, 34, 0.95);
+      padding: 2.5rem 2rem;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.25);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      font-size: 2rem;
+    }
+    #reason {
+      font-size: 1.2rem;
+      margin: 1.5rem 0;
+      min-height: 48px;
+      transition: color 0.2s;
+    }
+    button {
+      background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(221,36,118,0.15);
+      transition: background 0.2s, transform 0.1s;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #dd2476 0%, #ff512f 100%);
+      transform: translateY(-2px) scale(1.03);
+    }
+    @media (max-width: 500px) {
+      .container {
+        padding: 1.5rem 0.5rem;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>No as a Service</h1>
+    <div id="reason">Click the button to get a reason!</div>
+    <button onclick="getReason()">Get New Reason</button>
+  </div>
+  <script>
+    async function getReason() {
+      const res = await fetch('/no');
+      const data = await res.json();
+      document.getElementById('reason').textContent = data.reason;
+    }
+  </script>
+</body>
+</html>
